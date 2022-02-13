@@ -1,0 +1,6 @@
+framework module Pods_DemoTaskSedin_DemoTaskSedinUITests {
+  umbrella header "Pods-DemoTaskSedin-DemoTaskSedinUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
