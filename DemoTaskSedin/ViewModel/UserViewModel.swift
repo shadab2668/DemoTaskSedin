@@ -1,21 +1,21 @@
 //
 //  UserViewModel.swift
-//  DemoToroiTaskIos
+// DemoTaskSedin
 //
-//  Created by Shadab Hussain on 15/12/21.
+//  Created by Shadab Hussain on  13/02/22.
 //
 
 import Foundation
 import Alamofire
-protocol ReloadTableProtocol {
+protocol ReloadTableProtocol: class {
     func reloadTable()
 }
 class UserViewModel {
     var arrUser: [UserData] = []
-    var delegate: ReloadTableProtocol?
+   weak var delegate: ReloadTableProtocol?
     func getAllUserData() {
         AF.request("https://api.github.com/repos/Alamofire/Alamofire/issues").response { response in
-            if let data = response.data{
+            if let data = response.data {
                 print(response.data)
                 do{
                     let userResponse = try? JSONDecoder().decode([UserData].self, from: data)
@@ -27,7 +27,7 @@ class UserViewModel {
                         self.delegate?.reloadTable()
                     }
                  
-                } catch let err{
+                } catch let err {
                     print(err.localizedDescription)
                     
                 }
